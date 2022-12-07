@@ -8,8 +8,19 @@ resource "aws_launch_template" "tier_web_launch_template" {
 
   network_interfaces {
     associate_public_ip_address = false
+    security_groups = [aws_security_group.tier-sg-pri-web.id]
   }
-  vpc_security_group_ids = []
+  
+  update_default_version = true
+
+  user_data = base64encode(templatefile("${path.module}/userdata/web.tpl",
+  {
+    apache_server_name="apache"
+    web_alb_dns=aws_lb.tier-alb-web.dns_name
+    web_alb_port="8080"
+    web_app=""
+    was_app=""
+  }))
 
   tags = {
     "Name" = "Web_launchTemplate"

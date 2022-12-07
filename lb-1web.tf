@@ -33,3 +33,7 @@ resource "aws_lb_listener" "tier-a-listener-web" {
   }
 
 }
+
+output "web_dns_name" {
+  value = "aws_lb.tier-alb-web.dns_name"
+}

@@ -8,8 +8,10 @@ resource "aws_launch_template" "tier_was_launch_template" {
 
   network_interfaces {
     associate_public_ip_address = false
+    security_groups = [aws_security_group.tier-sg-pri-was.id]
   }
-  vpc_security_group_ids = []
+  
+  update_default_version = true
 
   tags = {
     "Name" = "WAS_launchTemplate"

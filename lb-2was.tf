@@ -33,3 +33,6 @@ resource "aws_lb_listener" "tier-n-listner-was" {
     target_group_arn = aws_lb_target_group.tier-n-target-was.arn
   }
 }
+output "was_dns_name" {
+  value = "aws_lb.tier-alb-was.dns_name"
+}
