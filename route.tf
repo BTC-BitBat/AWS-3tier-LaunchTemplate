@@ -60,3 +60,25 @@ resource "aws_route_table_association" "tier-rtass-pri-c-web" {
     aws_route.tier-r-pri-web
   ]
 }
+resource "aws_route_table_association" "tier-rtass-pri-a-was" {
+  subnet_id      = aws_subnet.was-sub-a.id
+  route_table_id = aws_route_table.tier-rt-pri-web.id
+
+}
+resource "aws_route_table_association" "tier-rtass-pri-c-was" {
+  subnet_id      = aws_subnet.was-sub-c.id
+  route_table_id = aws_route_table.tier-rt-pri-web.id
+
+}
+
+resource "aws_route_table_association" "tier-rtass-pri-a-db" {
+  subnet_id      = aws_subnet.db-sub-a.id
+  route_table_id = aws_route_table.tier-rt-pri-web.id
+
+}
+
+resource "aws_route_table_association" "tier-rtass-pri-c-db" {
+  subnet_id      = aws_subnet.db-sub-c.id
+  route_table_id = aws_route_table.tier-rt-pri-web.id
+
+}

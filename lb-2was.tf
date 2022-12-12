@@ -34,5 +34,5 @@ resource "aws_lb_listener" "tier-n-listner-was" {
   }
 }
 output "was_dns_name" {
-  value = "aws_lb.tier-alb-was.dns_name"
+  value = "aws_lb.tier-nlb-was.dns_name"
 }

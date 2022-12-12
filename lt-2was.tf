@@ -8,10 +8,14 @@ resource "aws_launch_template" "tier_was_launch_template" {
 
   network_interfaces {
     associate_public_ip_address = false
-    security_groups = [aws_security_group.tier-sg-pri-was.id]
+    security_groups             = [aws_security_group.tier-sg-pri-was.id]
   }
-  
+
   update_default_version = true
+  user_data = base64encode(templatefile("${path.module}/userdata/was.tpl",
+    {
+
+  }))
 
   tags = {
     "Name" = "WAS_launchTemplate"
